@@ -1,5 +1,5 @@
 # Building-A-Modern-Computer-From-NAND-Gates-Using-HDL
-my 3rd Semester college mini project
+Semseter Mini Project...
 
 Building up a Modern 16 bit computer from basic NAND gates using  HDL in which YOU can play games like Tetries and Pong .
 
