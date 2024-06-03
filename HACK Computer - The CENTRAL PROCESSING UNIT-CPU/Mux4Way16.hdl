@@ -1,0 +1,37 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Mux4Way16.hdl
+
+/**
+ * 4-way 16-bit multiplexor:
+ * out = a if sel == 00
+ *       b if sel == 01
+ *       c if sel == 10
+ *       d if sel == 11
+ */
+
+CHIP Mux4Way16 {
+    IN a[16], b[16], c[16], d[16], sel[2];
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+	Not(in=sel[0],out=sel0bar);
+	Not(in=sel[1],out=sel1bar);
+	And(a=sel[0],b=sel[1],out=selsel);
+	And(a=sel[0],b=sel1bar,out=selbarsel);
+	And(a=sel0bar,b=sel[1],out=selselbar);
+	And(a=sel0bar,b=sel1bar,out=selbarselbar);
+	Oneto16(in=selsel,out=v1);
+	Oneto16(in=selbarsel,out=v2);
+	Oneto16(in=selselbar,out=v3);
+	Oneto16(in=selbarselbar,out=v4);
+	And16(a=a,b=v4,out=out1);
+	And16(a=b,b=v2,out=out2);
+	And16(a=c,b=v3,out=out3);
+	And16(a=d,b=v1,out=out4);
+	Or16(a=out1,b=out2,out=ans1);
+	Or16(a=out3,b=out4,out=ans2);
+	Or16(a=ans1,b=ans2,out=out);
+}
