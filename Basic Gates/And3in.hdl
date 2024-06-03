@@ -1,0 +1,7 @@
+CHIP And3in{
+	IN a,b,c;
+	OUT out;
+	PARTS:
+		And(a=a,b=b,out=ans);
+		And(a=ans,b=c,out=out);
+}

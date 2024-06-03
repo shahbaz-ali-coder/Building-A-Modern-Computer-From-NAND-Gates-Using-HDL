@@ -1,0 +1,5 @@
+The .hdl file are the HDL code for the gate represented by their name
+
+.tst file will be used to test the gate 
+
+.cmp file will be used to compare output of a gate to its standard output
